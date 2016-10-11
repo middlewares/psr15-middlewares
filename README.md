@@ -10,22 +10,22 @@ This is a migration of most [psr7-middlewares](https://github.com/oscarotero/psr
 * A [PSR-7](https://packagist.org/providers/psr/http-message-implementation) http mesage implementation ([Diactoros](https://github.com/zendframework/zend-diactoros), [Guzzle](https://github.com/guzzle/psr7), [Slim](https://github.com/slimphp/Slim), etc...)
 * A [PSR-15](https://github.com/http-interop/http-middleware) middleware dispatcher ([Middleman](https://github.com/mindplay-dk/middleman), etc...)
 
-## Main differences with [psr7-middlewares](https://github.com/oscarotero/psr7-middlewares)
+## Main differences with [psr7-middlewares](https://github.com/oscarotero/psr7-middlewares):
 
-### PSR-15 / PSR-17 compliant
+### PSR-15 compliant
 
 `PSR-15` defines a set of interfaces for interoperability with `PSR-7` middleware adding the following changes:
 
 * The double-pass signature `function ($request, $response, $next)` is replaced by the new lambda-style: `function ($request, $next)`.
-* There's two different interfaces: `MiddlewareInterface` and `ServerMiddlewareInterface` in order to differentiate between middlewares requiring a `RequestInterface` or a `ServerRequestInterface`.
+* There are two different interfaces: `MiddlewareInterface` and `ServerMiddlewareInterface` in order to differentiate between middlewares requiring a `RequestInterface` or a `ServerRequestInterface`.
 
-### Split the middlewares into separate packages
+### Splitted the middlewares into separate packages
 
-This is something [requested by many people](https://github.com/oscarotero/psr7-middlewares/issues/23) so with the PSR-15 comming up, this is a good opportunity to port these components in individual packages.
+This is something [requested by some people](https://github.com/oscarotero/psr7-middlewares/issues/23) so with the PSR-15 comming up, this is a good opportunity to port these components in individual packages.
 
 ### Removed the vendor namespace from the request attribute
 
-In the old version, some components insert automatically values in the request attributes in a way that is hard to recover. For example, in [ClientIp](https://github.com/oscarotero/psr7-middlewares#clientip) to get the user ip you need to use a static function:
+In the old psr7 version, some components insert automatically values in the request attributes in a way that is hard to recover. For example, in [ClientIp](https://github.com/oscarotero/psr7-middlewares#clientip) to get the user ip you need to use a static function:
 
 ```php
 use PsrMiddlewares\Middleware\ClientIp;
@@ -40,15 +40,21 @@ $data = $request->getAttribute('Psr7Middlewares\\Middleware');
 $ip = isset($data['CLIENT_IPS'][0]) ? $data['CLIENT_IPS'][0] : null;
 ```
 
-I decided to remove this and use **configurable** attribute names:
+This was done to avoid conflicts with other attributes, but for convenience I decided to remove this method and use **configurable** attribute names:
 
 ```php
 $ip = $request->getAttribute('client-ip'); //easy!!
 ```
 
-### Split middleware components in multiple subcomponents
+Because the attribute name is configurable, you can use whatever you want in order to prevent conflict, for example, using a underscore as prefix:
 
-In the old version, some components uses "transformer resolvers" to do different things deppending of some circunstances (content-type, encoding, etc). [Payload](https://github.com/oscarotero/psr7-middlewares#payload) is an example of this: it can parse json, urlencoded or csv in the same class. Now this components have been splitted into subcomponents, so now there's a `JsonPayload`, `UrlEncodedPayload` and `CsvPayload`. Easier to maintain and to extends.
+```php
+$dispatcher[] = (new Middlewares\ClientIp)->attribute('_client-ip');
+```
+
+### Splitted some components into separate subcomponents
+
+In the psr7 old version, some components uses "resolvers" to do different things deppending of some circunstances (content-type, encoding, etc). [Payload](https://github.com/oscarotero/psr7-middlewares#payload) is an example of this: it can parse json, urlencoded or csv in the same class. Now this components have been splitted into subcomponents, so now there's a `JsonPayload`, `UrlEncodedPayload` and `CsvPayload`. Easier to maintain and extend.
 
 ### More open
 
@@ -94,14 +100,15 @@ $dispatcher = new Dispatcher([
     //Parse the urlencoded payload
     new Middlewares\UrlEncodedPayload(),
 
-    //Saves the client ip in the 'ip' attribute
+    //Save the client ip in the '_ip' attribute
     (new Middlewares\ClientIp())
-    	->attribute('ip'),
+    	->attribute('_ip'),
 
     //Allow only some ips
-    new Middlewares\Firewall(['127.0.0.*']),
+    (new Middlewares\Firewall(['127.0.0.*']))
+        ->ipAttribute('_ip'),
 
-    //Add cache expiration
+    //Add cache expiration headers
     new Middlewares\Expires(),
 
     //Negotiate the content-type
@@ -110,15 +117,15 @@ $dispatcher = new Dispatcher([
     //Negotiate the language
     new Middlewares\ContentLanguage(['gl', 'es', 'en']),
 
-    //Create and save a session in 'session' attribute
+    //Create and save a session in '_session' attribute
     (new Middlewares\AuraSession())
-    	->attribute('session'),
+    	->attribute('_session'),
 
-    //Adds the php debugbar
+    //Add the php debugbar
     new Middlewares\Debugbar(),
 
     //Handle the routes with fast-route
-    new Middlewares\FastRoute($app->get('dispatcher'))
+    new Middlewares\FastRoute($app->get('dispatcher')),
 ]);
 
 $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
@@ -177,7 +184,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 
 ## Contributing
 
-Use the package repository of each component to notify any issue or pull request related with it, and use this repositorio for generical questions, new middlewares discussions, etc.
+Use the package repository of each component to notify any issue or pull request related with it, and use this repository for generical questions, new middlewares discussions, etc.
 
 See [CONTRIBUTING](CONTRIBUTING.md) for contributing details.
 
