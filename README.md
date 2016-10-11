@@ -179,6 +179,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
   * [UrlEncodedPayload](https://github.com/middlewares/payload#urlencodepayload)
 * [PhpSession](https://github.com/middlewares/php-session)
 * [Recaptcha](https://github.com/middlewares/recaptcha)
+* [ReferrerSpam](https://github.com/middlewares/referrer-spam)
 * [ResponseTime](https://github.com/middlewares/response-time)
 * [Robots](https://github.com/middlewares/robots)
 * [Shutdown](https://github.com/middlewares/shutdown)
