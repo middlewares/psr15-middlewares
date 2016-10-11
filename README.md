@@ -88,6 +88,9 @@ $dispatcher = new Dispatcher([
     //Disable the search engine robots
     new Middlewares\Robots(false),
 
+    //Compress the response to gzip
+    new Middlewares\GzipEncoder(),
+
     //Minify the html
     new Middlewares\HtmlMinifier(),
 
@@ -145,6 +148,9 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 * [Cors](https://github.com/middlewares/cors)
 * [Csp](https://github.com/middlewares/csp)
 * [Debugbar](https://github.com/middlewares/debugbar)
+* [Encoder](https://github.com/middlewares/encoder)
+  * [DeflateEncoder](https://github.com/middlewares/encoder#deflateencoder)
+  * [GzipEncoder](https://github.com/middlewares/encoder#gzipencoder)
 * [ErrorHandler](https://github.com/middlewares/error-handler)
 * [FastRoute](https://github.com/middlewares/fast-route)
 * [Filesystem](https://github.com/middlewares/filesystem)
