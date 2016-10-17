@@ -136,57 +136,83 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 
 ## List of all available components
 
-* [AccessLog](https://github.com/middlewares/access-log)
-* [AuraRouter](https://github.com/middlewares/aura-router)
-* [AuraSession](https://github.com/middlewares/aura-session)
-* [BasePath](https://github.com/middlewares/base-path)
-* [Cache](https://github.com/middlewares/cache)
-  * [Cache](https://github.com/middlewares/cache#cache)
-  * [CachePrevention](https://github.com/middlewares/cache#cacheprevention)
-  * [Expires](https://github.com/middlewares/cache#expires)
-* [ClientIp](https://github.com/middlewares/client-ip)
-* [Cors](https://github.com/middlewares/cors)
-* [Csp](https://github.com/middlewares/csp)
-* [Debugbar](https://github.com/middlewares/debugbar)
-* [Encoder](https://github.com/middlewares/encoder)
-  * [DeflateEncoder](https://github.com/middlewares/encoder#deflateencoder)
-  * [GzipEncoder](https://github.com/middlewares/encoder#gzipencoder)
-* [ErrorHandler](https://github.com/middlewares/error-handler)
-* [FastRoute](https://github.com/middlewares/fast-route)
-* [Filesystem](https://github.com/middlewares/filesystem)
-  * [Reader](https://github.com/middlewares/filesystem#reader)
-  * [Writer](https://github.com/middlewares/filesystem#writer)
-* [Firewall](https://github.com/middlewares/firewall)
-* [Geolocation](https://github.com/middlewares/geolocation)
-* [Honeypot](https://github.com/middlewares/honeypot)
-* [ImageManipulation](https://github.com/middlewares/image-manipulation)
+### Authentication
+
 * [HttpAuthentication](https://github.com/middlewares/http-authentication)
   * [BasicAuthentication](https://github.com/middlewares/http-authentication#basicauthentication)
   * [DigestAuthentication](https://github.com/middlewares/http-authentication#digestauthentication)
-* [Https](https://github.com/middlewares/https)
-* [MethodOverride](https://github.com/middlewares/method-override)
-* [Minifier](https://github.com/middlewares/minifier)
-  * [CssMinifier](https://github.com/middlewares/minifier#cssminifier)
-  * [HtmlMinifier](https://github.com/middlewares/minifier#htmlminifier)
-  * [JsMinifier](https://github.com/middlewares/minifier#jsminifier)
+
+### Client info
+
+* [ClientIp](https://github.com/middlewares/client-ip)
 * [Negotiation](https://github.com/middlewares/negotiation)
   * [ContentType](https://github.com/middlewares/negotiation#contenttype)
   * [ContentLanguage](https://github.com/middlewares/negotiation#contentlanguage)
   * [ContentEncoding](https://github.com/middlewares/negotiation#contentencoding)
+* [Geolocation](https://github.com/middlewares/geolocation)
+
+### Develop utils
+
+* [AccessLog](https://github.com/middlewares/access-log)
+* [Debugbar](https://github.com/middlewares/debugbar)
+* [ErrorHandler](https://github.com/middlewares/error-handler)
+* [ResponseTime](https://github.com/middlewares/response-time)
+* [Shutdown](https://github.com/middlewares/shutdown)
+* [Uuid](https://github.com/middlewares/uuid)
+* [Whoops](https://github.com/middlewares/whoops)
+
+### Optimization
+
+* [Cache](https://github.com/middlewares/cache)
+  * [Cache](https://github.com/middlewares/cache#cache)
+  * [CachePrevention](https://github.com/middlewares/cache#cacheprevention)
+  * [Expires](https://github.com/middlewares/cache#expires)
+* [Encoder](https://github.com/middlewares/encoder)
+  * [DeflateEncoder](https://github.com/middlewares/encoder#deflateencoder)
+  * [GzipEncoder](https://github.com/middlewares/encoder#gzipencoder)
+* [Minifier](https://github.com/middlewares/minifier)
+  * [CssMinifier](https://github.com/middlewares/minifier#cssminifier)
+  * [HtmlMinifier](https://github.com/middlewares/minifier#htmlminifier)
+  * [JsMinifier](https://github.com/middlewares/minifier#jsminifier)
+
+### Routers
+
+* [AuraRouter](https://github.com/middlewares/aura-router)
+* [FastRoute](https://github.com/middlewares/fast-route)
+
+### Security
+
+* [Cors](https://github.com/middlewares/cors)
+* [Csp](https://github.com/middlewares/csp)
+* [Firewall](https://github.com/middlewares/firewall)
+* [Honeypot](https://github.com/middlewares/honeypot)
+* [Recaptcha](https://github.com/middlewares/recaptcha)
+* [ReferrerSpam](https://github.com/middlewares/referrer-spam)
+* [Robots](https://github.com/middlewares/robots)
+
+### Session
+
+* [AuraSession](https://github.com/middlewares/aura-session)
+* [PhpSession](https://github.com/middlewares/php-session)
+
+### Urls
+
+* [BasePath](https://github.com/middlewares/base-path)
+* [Https](https://github.com/middlewares/https)
+* [TrailingSlash](https://github.com/middlewares/trailing-slash)
+* [Www](https://github.com/middlewares/www)
+
+### Others
+
+* [Filesystem](https://github.com/middlewares/filesystem)
+  * [Reader](https://github.com/middlewares/filesystem#reader)
+  * [Writer](https://github.com/middlewares/filesystem#writer)
+* [ImageManipulation](https://github.com/middlewares/image-manipulation)
+* [MethodOverride](https://github.com/middlewares/method-override)
 * [Payload](https://github.com/middlewares/payload)
   * [CsvPayload](https://github.com/middlewares/payload#csvpayload)
   * [JsonPayload](https://github.com/middlewares/payload#jsonpayload)
   * [UrlEncodedPayload](https://github.com/middlewares/payload#urlencodepayload)
-* [PhpSession](https://github.com/middlewares/php-session)
-* [Recaptcha](https://github.com/middlewares/recaptcha)
-* [ReferrerSpam](https://github.com/middlewares/referrer-spam)
-* [ResponseTime](https://github.com/middlewares/response-time)
-* [Robots](https://github.com/middlewares/robots)
-* [Shutdown](https://github.com/middlewares/shutdown)
-* [TrailingSlash](https://github.com/middlewares/trailing-slash)
-* [Uuid](https://github.com/middlewares/uuid)
-* [Whoops](https://github.com/middlewares/whoops)
-* [Www](https://github.com/middlewares/www)
 
 
 ## Contributing
