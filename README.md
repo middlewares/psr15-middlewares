@@ -219,7 +219,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 
 Use the package repository of each component to notify any issue or pull request related with it, and use this repository for generical questions, new middlewares discussions, etc.
 
-If you want to contribute with new middlewares, you can take a look to [these ideas](https://github.com/middlewares/psr15-middlewares/projects/1) and create an issue to expose the functionality. There's also a [boilerplate](https://github.com/middlewares/boilerplate) that you can use for quick start.
+If you want to contribute with new middlewares, you can take a look to [these ideas](https://github.com/middlewares/psr15-middlewares/projects/1) and create an issue to expose the functionality. There's also a [skeleton](https://github.com/middlewares/skeleton) that you can use for quick start.
 
 See [CONTRIBUTING](CONTRIBUTING.md) for contributing details.
 
