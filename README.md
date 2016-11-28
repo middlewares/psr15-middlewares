@@ -17,7 +17,7 @@ This is a migration of most [psr7-middlewares](https://github.com/oscarotero/psr
 `PSR-15` defines a set of interfaces for interoperability with `PSR-7` middleware adding the following changes:
 
 * The double-pass signature `function ($request, $response, $next)` is replaced by the new lambda-style: `function ($request, $next)`.
-* There are two different interfaces: `MiddlewareInterface` and `ServerMiddlewareInterface` in order to differentiate between middlewares requiring a `RequestInterface` or a `ServerRequestInterface`.
+* PSR-15 only address server-side middleware (the request must implement `ServerRequestInterface`). A separate proposal will be created for client/asyncronous middlewares in a future.
 
 ### Splitted the middlewares into separate packages
 
