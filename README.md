@@ -2,7 +2,7 @@
 
 Collection of [PSR-15](https://github.com/http-interop/http-middleware) middlewares
 
-This is a migration of most [psr7-middlewares](https://github.com/oscarotero/psr7-middlewares) to follow PSR-15 specification (currently released as `0.2.0` of `php-interop/http-middleware`).
+This is a migration of most [psr7-middlewares](https://github.com/oscarotero/psr7-middlewares) to follow PSR-15 specification (currently released as `0.3.0` of `php-interop/http-middleware`).
 
 ## Requirements
 
