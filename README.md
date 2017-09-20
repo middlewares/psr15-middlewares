@@ -200,6 +200,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 
 * [BasePath](https://github.com/middlewares/base-path)
 * [Https](https://github.com/middlewares/https)
+* [Redirect](https://github.com/middlewares/redirect)
 * [TrailingSlash](https://github.com/middlewares/trailing-slash)
 * [Www](https://github.com/middlewares/www)
 
