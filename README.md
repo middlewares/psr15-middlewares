@@ -1,70 +1,21 @@
+![logo](art/logo.svg)
+
 # psr15-middlewares
 
-Collection of [PSR-15](https://github.com/http-interop/http-middleware) middlewares
+Collection of [PSR-15](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md) middlewares
 
-This is a migration of most [psr7-middlewares](https://github.com/oscarotero/psr7-middlewares) to follow PSR-15 specification (currently released as `0.4.0` of `php-interop/http-middleware`).
 
 ## Requirements
 
-* PHP >= 5.6
+* PHP >= 7.0
 * A [PSR-7](https://packagist.org/providers/psr/http-message-implementation) http message implementation ([Diactoros](https://github.com/zendframework/zend-diactoros), [Guzzle](https://github.com/guzzle/psr7), [Slim](https://github.com/slimphp/Slim), etc...)
-* A [PSR-15](https://github.com/http-interop/http-middleware) middleware dispatcher ([Middleman](https://github.com/mindplay-dk/middleman), etc...)
-
-## Main differences with [psr7-middlewares](https://github.com/oscarotero/psr7-middlewares):
-
-### PSR-15 compliant
-
-`PSR-15` defines a set of interfaces for interoperability with `PSR-7` middleware adding the following changes:
-
-* The double-pass signature `function ($request, $response, $next)` is replaced by the new lambda-style: `function ($request, $next)`.
-* PSR-15 only address server-side middleware (the request must implement `ServerRequestInterface`). A separate proposal will be created for client/asyncronous middlewares in a future.
-
-### Splitted the middlewares into separate packages
-
-This is something [requested by some people](https://github.com/oscarotero/psr7-middlewares/issues/23) so with the PSR-15 comming up, this is a good opportunity to port these components in individual packages.
-
-### Removed the vendor namespace from the request attribute
-
-In the old psr7 version, some components insert automatically values in the request attributes in a way that is hard to recover. For example, in [ClientIp](https://github.com/oscarotero/psr7-middlewares#clientip) to get the user ip you need to use a static function:
-
-```php
-use PsrMiddlewares\Middleware\ClientIp;
-
-$ip = ClientIp::getIp($request);
-```
-
-Because the "hard" way is:
-
-```php
-$data = $request->getAttribute('Psr7Middlewares\\Middleware');
-$ip = isset($data['CLIENT_IPS'][0]) ? $data['CLIENT_IPS'][0] : null;
-```
-
-This was done to avoid conflicts with other attributes, but for convenience I decided to remove this method and use **configurable** attribute names:
-
-```php
-$ip = $request->getAttribute('client-ip'); //easy!!
-```
-
-Because the attribute name is configurable, you can use whatever you want in order to prevent conflict, for example, using a underscore as prefix:
-
-```php
-$dispatcher[] = (new Middlewares\ClientIp)->attribute('_client-ip');
-```
-
-### Splitted some components into separate subcomponents
-
-In the psr7 old version, some components uses "resolvers" to do different things deppending of some circunstances (content-type, encoding, etc). [Payload](https://github.com/oscarotero/psr7-middlewares#payload) is an example of this: it can parse json, urlencoded or csv in the same class. Now this components have been splitted into subcomponents, so now there's a `JsonPayload`, `UrlEncodedPayload` and `CsvPayload`. Easier to maintain and extend.
-
-### More open
-
-The middlewares has been moved to this organization. This is not the oscarotero's middlewares, this is simply "middlewares" and the community is welcome to participate. 
+* A [PSR-15 middleware dispatcher](https://github.com/middlewares/awesome-psr15-middlewares#dispatcher)
 
 ## Usage example
 
 ```php
 use Zend\Diactoros\ServerRequestFactory;
-use mindplay\middleman\Dispatcher;
+use Middlewares\Utils\Dispatcher;
 use Middlewares;
 
 $dispatcher = new Dispatcher([
@@ -120,15 +71,18 @@ $dispatcher = new Dispatcher([
     //Negotiate the language
     new Middlewares\ContentLanguage(['gl', 'es', 'en']),
 
+    //Handle the routes with fast-route
+    new Middlewares\FastRoute($app->get('dispatcher')),
+
     //Create and save a session in '_session' attribute
     (new Middlewares\AuraSession())
-    	->attribute('_session'),
+        ->attribute('_session'),
 
     //Add the php debugbar
     new Middlewares\Debugbar(),
 
-    //Handle the routes with fast-route
-    new Middlewares\FastRoute($app->get('dispatcher')),
+    //Handle the route
+    new Middlewares\RequestHandler(),
 ]);
 
 $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
