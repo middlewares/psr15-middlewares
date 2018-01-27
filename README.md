@@ -4,7 +4,6 @@
 
 Collection of [PSR-15](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md) middlewares
 
-
 ## Requirements
 
 * PHP >= 7.0
@@ -154,6 +153,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 
 * [BasePath](https://github.com/middlewares/base-path)
 * [Https](https://github.com/middlewares/https)
+* [Redirect](https://github.com/middlewares/redirect)
 * [TrailingSlash](https://github.com/middlewares/trailing-slash)
 * [Www](https://github.com/middlewares/www)
 
