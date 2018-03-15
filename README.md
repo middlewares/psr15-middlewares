@@ -164,6 +164,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
   * [Reader](https://github.com/middlewares/filesystem#reader)
   * [Writer](https://github.com/middlewares/filesystem#writer)
 * [ImageManipulation](https://github.com/middlewares/image-manipulation)
+* [ContentLength](https://github.com/middlewares/content-length)
 * [MethodOverride](https://github.com/middlewares/method-override)
 * [Payload](https://github.com/middlewares/payload)
   * [CsvPayload](https://github.com/middlewares/payload#csvpayload)
