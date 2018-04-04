@@ -51,7 +51,7 @@ $dispatcher = new Dispatcher([
     new Middlewares\JsonPayload(),
 
     //Parse the urlencoded payload
-    new Middlewares\UrlEncodedPayload(),
+    new Middlewares\UrlEncodePayload(),
 
     //Save the client ip in the '_ip' attribute
     (new Middlewares\ClientIp())
@@ -169,7 +169,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 * [Payload](https://github.com/middlewares/payload)
   * [CsvPayload](https://github.com/middlewares/payload#csvpayload)
   * [JsonPayload](https://github.com/middlewares/payload#jsonpayload)
-  * [UrlEncodedPayload](https://github.com/middlewares/payload#urlencodepayload)
+  * [UrlEncodePayload](https://github.com/middlewares/payload#urlencodepayload)
 
 
 ## Contributing
