@@ -87,7 +87,7 @@ $dispatcher = new Dispatcher([
 $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 ```
 
-## List of all available components
+## List of all available middlewares
 
 ### Authentication
 
@@ -109,6 +109,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 * [AccessLog](https://github.com/middlewares/access-log)
 * [Debugbar](https://github.com/middlewares/debugbar)
 * [ErrorHandler](https://github.com/middlewares/error-handler)
+* [ReportingLogger](https://github.com/middlewares/reporting-logger)
 * [ResponseTime](https://github.com/middlewares/response-time)
 * [Shutdown](https://github.com/middlewares/shutdown)
 * [Uuid](https://github.com/middlewares/uuid)
