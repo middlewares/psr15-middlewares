@@ -137,6 +137,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 
 ### Security
 
+* [Anti Csrf Middleware](https://github.com/aldovincenti/anti-csrf-middleware)
 * [Cors](https://github.com/middlewares/cors)
 * [Csp](https://github.com/middlewares/csp)
 * [Firewall](https://github.com/middlewares/firewall)
