@@ -158,10 +158,6 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 * [TrailingSlash](https://github.com/middlewares/trailing-slash)
 * [Www](https://github.com/middlewares/www)
 
-### Validation
-
-* [OpenAPI](https://github.com/thephpleague/openapi-psr7-validator)
-
 ### Others
 
 * [Proxy](https://github.com/middlewares/proxy)
