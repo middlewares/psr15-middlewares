@@ -64,6 +64,9 @@ $dispatcher = new Dispatcher([
     //Add cache expiration headers
     new Middlewares\Expires(),
 
+    //Add the php debugbar
+    new Middlewares\Debugbar(),
+
     //Negotiate the content-type
     new Middlewares\ContentType(),
 
@@ -76,9 +79,6 @@ $dispatcher = new Dispatcher([
     //Create and save a session in '_session' attribute
     (new Middlewares\AuraSession())
         ->attribute('_session'),
-
-    //Add the php debugbar
-    new Middlewares\Debugbar(),
 
     //Handle the route
     new Middlewares\RequestHandler(),
