@@ -133,6 +133,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 
 * [AuraRouter](https://github.com/middlewares/aura-router)
 * [FastRoute](https://github.com/middlewares/fast-route)
+* [BasePathRouter](https://github.com/middlewares/base-path-router)
 * [RequestHandler](https://github.com/middlewares/request-handler)
 
 ### Security
