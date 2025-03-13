@@ -151,7 +151,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
 * [AuraSession](https://github.com/middlewares/aura-session)
 * [PhpSession](https://github.com/middlewares/php-session)
 
-### Urls
+### URLs
 
 * [BasePath](https://github.com/middlewares/base-path)
 * [Https](https://github.com/middlewares/https)
@@ -172,6 +172,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
   * [CsvPayload](https://github.com/middlewares/payload#csvpayload)
   * [JsonPayload](https://github.com/middlewares/payload#jsonpayload)
   * [UrlEncodePayload](https://github.com/middlewares/payload#urlencodepayload)
+* [Emitter](https://github.com/middlewares/emitter)
 
 
 ## Contributing
