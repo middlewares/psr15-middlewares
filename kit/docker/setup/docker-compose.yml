@@ -1,0 +1,18 @@
+services:
+  php:
+    restart: "no"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ../../../:/src
+      - ../cache:/cache
+      - ../cache/apt:/var/cache/apt/archives/
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+    user: ${KIT_UID}:${KIT_GID}
+    working_dir: /src
+    environment:
+      - COMPOSER_CACHE_DIR=/cache/composer
+#    env_file:
+#      - user.env

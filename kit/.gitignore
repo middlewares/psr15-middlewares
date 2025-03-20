@@ -1,0 +1,7 @@
+.idea
+vendor
+composer.lock
+coverage
+*.cache
+docker/cache/*
+!docker/cache/.gitkeep
