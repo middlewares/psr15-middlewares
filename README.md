@@ -1,6 +1,6 @@
 ![logo](art/logo.svg)
 
-# psr15-middlewares
+# PSR-15 Middlewares
 
 Collection of [PSR-15](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md) middlewares
 
