@@ -13,7 +13,7 @@ Collection of [PSR-15](https://github.com/php-fig/fig-standards/blob/master/acce
 ## Usage example
 
 ```php
-use Zend\Diactoros\ServerRequestFactory;
+use Laminas\Diactoros\ServerRequestFactory;
 use Middlewares\Utils\Dispatcher;
 use Middlewares;
 
