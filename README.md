@@ -7,7 +7,7 @@ Collection of [PSR-15](https://github.com/php-fig/fig-standards/blob/master/acce
 ## Requirements
 
 * PHP >=7.2
-* A [PSR-7](https://packagist.org/providers/psr/http-message-implementation) http message implementation ([Diactoros](https://github.com/laminas/laminas-diactoros), [Guzzle](https://github.com/guzzle/psr7), [Slim](https://github.com/slimphp/Slim), etc...)
+* A [PSR-7](https://packagist.org/providers/psr/http-message-implementation) http message implementation ([Diactoros](https://github.com/laminas/laminas-diactoros), [Slim](https://github.com/slimphp/Slim), [or many more here](https://github.com/middlewares/awesome-psr15-middlewares?tab=readme-ov-file#psr-7-implementations) etc...)
 * A [PSR-15 middleware dispatcher](https://github.com/middlewares/awesome-psr15-middlewares#dispatcher)
 
 ## Usage example
