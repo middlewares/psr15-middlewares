@@ -174,7 +174,7 @@ $response = $dispatcher->dispatch(ServerRequestFactory::fromGlobals());
   * [UrlEncodePayload](https://github.com/middlewares/payload#urlencodepayload)
 * [Emitter](https://github.com/middlewares/emitter)
 
-### Links of Interest
+## Links of Interest
 
 - [Awesome PSR-15 Middlewares](https://github.com/middlewares/awesome-psr15-middlewares)
 
